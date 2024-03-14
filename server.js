@@ -5,7 +5,7 @@ import fetchJson from './helpers/fetch-json.js';
 const app = express();
 
 // Importeer het npm pakket express uit de node_modules map
-import express from 'express';
+import express, { json } from 'express';
 
 // Stel ejs in als template engine
 app.set('view engine', 'ejs')
@@ -19,10 +19,20 @@ app.use(express.static('public'))
 // Zorg dat werken met request data makkelijker wordt
 app.use(express.urlencoded({extended: true}))
 
+// TODO: routes voor deze Hand-Footprint applicatie..
 
-// TODO: routes voor deze pizza applicatie..
+
+
 app.get('/', function(request, response) {
-	response.render('index')
+	fetchJson("https://fdnd-agency.directus.app/items/hf_sdgs").then((sdgsUitDeAPI) => {
+		response.render('index', {sdgs: sdgsUitDeAPI.data,})
+	});
+})
+
+app.get('/sdg/:sdg', function(request, response) {
+	fetchJson('https://fdnd-agency.directus.app/items/hf_sdgs?filter={"id":' + request.params.sdg + '}').then((sdgDetail) => {
+		response.render('sdg', {sdg: sdgDetail.data[0]})
+	})
 })
 
 // Stel het poortnummer in waar express op moet gaan luisteren

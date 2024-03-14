@@ -1,0 +1,50 @@
+<%- include('./partials/head.ejs') %>
+
+<!-- Header -->
+<section class="header">
+  <div class="title-wrapper">
+    <h1 class="sweet-title">
+      <span data-text="Hand">HAND</span>
+      <span data-text="Foot">FOOT</span>
+      <span data-text="Print">PRINT</span>
+    </h1>
+    <span class="top-title">Welkom bij de</span>
+    <span class="bottom-title">website!</span>
+  </div>
+</section>
+<h2 class="headertext">
+  Wilt u meer informatie over ons scroll dan naar beneden!
+</h2>
+
+<!-- SDG Informatie -->
+<section class="margin">
+  <div>
+    <h2>SDG</h2>
+    <p class="marginbot margintop">
+      Lorem ipsum dolor sit amet consectetur adipisicing elit. Maxime mollitia,
+      molestiae quas vel sint commodi repudiandae consequuntur voluptatum
+      laborum numquam blanditiis harum quisquam eius sed odit fugiat iusto fuga
+      praesentium optio, eaque rerum! Provident similique accusantium nemo
+      autem. Veritatis obcaecati tenetur iure eius earum ut molestias architecto
+      voluptate
+    </p>
+    <p>U kunt op een SDG klikken om de informatie te lezen!</p>
+  </div>
+
+  <div class="sdgarticle">
+    <ul class="sdglist">
+      <% sdgs.forEach(sdg => { %>
+      <li>
+        <a href="/sdg/ <%= sdg.id %>">
+          <img src="https://fdnd-agency.directus.app/assets/<%= sdg.icon %>" />
+        </a>
+      </li>
+      <% }) %>
+    </ul>
+  </div>
+</section>
+
+<section>
+  <h2>Stakeholders</h2>
+  <p class="marginbot margintop">kaas</p>
+</section>

@@ -21,16 +21,18 @@ app.use(express.urlencoded({extended: true}))
 
 // TODO: routes voor deze Hand-Footprint applicatie..
 
-
+// Variabeles aanmaken voor de routes
+const apiUrl = 'https://fdnd-agency.directus.app/items/'
+const sdgList = apiUrl + 'hf_sdgs'
 
 app.get('/', function(request, response) {
-	fetchJson("https://fdnd-agency.directus.app/items/hf_sdgs").then((sdgsUitDeAPI) => {
+	fetchJson(sdgList).then((sdgsUitDeAPI) => {
 		response.render('index', {sdgs: sdgsUitDeAPI.data,})
 	});
 })
 
 app.get('/sdg/:sdg', function(request, response) {
-	fetchJson('https://fdnd-agency.directus.app/items/hf_sdgs?filter={"id":' + request.params.sdg + '}').then((sdgDetail) => {
+	fetchJson(sdgList + '?filter={"id":' + request.params.sdg + '}').then((sdgDetail) => {
 		response.render('sdg', {sdg: sdgDetail.data[0]})
 	})
 })

@@ -154,6 +154,7 @@ header {
 
 .sdgarticle {
     display: flex;
+    flex-direction: column;
     justify-content: center;
     margin: 1em;
     margin-top: 2em;
@@ -267,4 +268,3 @@ li:hover {
     transform: scale(1.2);
     transition: all .3s ease;
 }
-
